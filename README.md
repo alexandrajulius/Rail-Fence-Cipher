@@ -1,5 +1,5 @@
+##Rail Fence Cipher
 ##Encryption Algorithm
-###Rail Fence Cipher
 
 The Rail Fence cipher is a form of transposition cipher that gets its name from the way in which it's encoded. It was already used by the ancient Greeks.
 
@@ -83,13 +83,3 @@ Consequently, all methods are declared static. Besides, this implementation does
 
 ###Author Contact
 [alexandra.julius@gmail.com](mailto:alexandra.julius@gmail.com)
-
-###todo
-switch arguments: first rails, then string, am besten
-die rails noch mit option angeben --r 
-der string soll keine whitespaces haben und soll
-mit delimitern eingeben 
--
-gib den string ein
--
-dann nicht die white space rausschmeißen
