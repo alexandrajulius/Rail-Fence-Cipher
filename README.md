@@ -1,5 +1,5 @@
-##Rail Fence Cipher
-##Encryption Algorithm
+# Rail Fence Cipher
+## Encryption Algorithm
 
 The Rail Fence cipher is a form of transposition cipher that gets its name from the way in which it's encoded. It was already used by the ancient Greeks.
 
@@ -47,12 +47,12 @@ http://exercism.io/exercises/php/rail-fence-cipher/readme
 and
 https://en.wikipedia.org/wiki/Transposition_cipher#Rail_Fence_cipher
 
-##How to run
+## How to run
 dependencies:
 
 * [PHP 7.1](http://php.net/downloads.php)
 
-##Usage
+## Usage
 
 There are two scripts (encode.php and decode.php) to be executed in the root directory:
       
@@ -66,7 +66,7 @@ with two input parameters for each script:
 
 The output will be displayed in the command line after the script was executed.
 
-##How to test
+## How to test
 dependencies:
 
 * [phpspec 4.3.0](http://www.phpspec.net/en/stable/)
@@ -75,11 +75,11 @@ execute in root directory
       
       ./bin/phpspec run
 
-##Notes on design
+## Notes on design
 I implemented the functionality of this task into a class although I don't consider an object oriented abstraction necessarily useful in this case for the following reasons:
 
 In the current implementation, there is no state or property that the methods need to manipulate or maintain. 
 Consequently, all methods are declared static. Besides, this implementation does not make use of either inheritance or polymorphism.
 
-###Author Contact
+## Author Contact
 [alexandra.julius@gmail.com](mailto:alexandra.julius@gmail.com)
