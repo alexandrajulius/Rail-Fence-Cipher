@@ -15,11 +15,18 @@ class EncodeMatrixSpec extends ObjectBehavior
 
     function it_returns_correct_matrix_with_2_rails()
     {
-        //mock an associative array with phpspec matcher
-        $this->getEncodeMatrix(["H","A","L","L","O"], 2)->shouldHaveKey('0');
-        $this->getEncodeMatrix(["H","A","L","L","O"], 2)->shouldHaveKey('1');
-        $this->getEncodeMatrix(["H","A","L","L","O"], 2)->shouldHaveValue(array("H",".","L",".","O"));
-        $this->getEncodeMatrix(["H","A","L","L","O"], 2)->shouldHaveValue(array(".","A",".","L","."));
+        $this->getEncodeMatrix(["H","E","L","L","O"], 2)->shouldHaveKey('0');
+        $this->getEncodeMatrix(["H","E","L","L","O"], 2)->shouldHaveKey('1');
+        $this->getEncodeMatrix(["H","E","L","L","O"], 2)->shouldHaveValue(array("H",".","L",".","O"));
+        $this->getEncodeMatrix(["H","E","L","L","O"], 2)->shouldHaveValue(array(".","E",".","L","."));
+    }
+
+    function it_returns_correct_matrix_with_2_rails_and_white_space()
+    {
+        $this->getEncodeMatrix(["H","E","L","L","O"," "], 2)->shouldHaveKey('0');
+        $this->getEncodeMatrix(["H","E","L","L","O"," "], 2)->shouldHaveKey('1');
+        $this->getEncodeMatrix(["H","E","L","L","O"," "], 2)->shouldHaveValue(array("H",".","L",".","O","."));
+        $this->getEncodeMatrix(["H","E","L","L","O"," "], 2)->shouldHaveValue(array(".","E",".","L","."," "));
     }
 /*
     function it_returns_different_test()
@@ -40,9 +47,6 @@ class EncodeMatrixSpec extends ObjectBehavior
         $this->getEncodeMatrix(["X","O","X","O","X","O","X","O","X","O"], 4)->shouldHaveValue(array(".","O",".",".",".","O",".","O",".","."));
         $this->getEncodeMatrix(["X","O","X","O","X","O","X","O","X","O"], 4)->shouldHaveValue(array(".",".","X",".","X",".",".",".","X","."));
         $this->getEncodeMatrix(["X","O","X","O","X","O","X","O","X","O"], 4)->shouldHaveValue(array(".",".",".","O",".",".",".",".",".","O"));
-
-        # this works without the matcher:
-        #$this->getMatrix(["X","O","X","O","X","O","X","O","X","O"], [0,1,2,3,2,1,0,1,2,3], 4)[0]->shouldBe(array("X",".",".",".",".",".","X",".",".","."));
     }
 
     public function getMatchers(): array

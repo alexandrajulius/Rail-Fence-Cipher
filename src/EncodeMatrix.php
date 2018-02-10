@@ -10,9 +10,13 @@ class EncodeMatrix
 
     public function getEncodeMatrix($textArray, $numberOfRails)
     {
-        #todo: error-handling check if empty and then return empty string
-        #todo: where does the empty space from the input disapear? find out in tests
         $matrix = array();
+        if (empty($textArray)) {
+            return $matrix;
+        }
+        if ($numberOfRails <=1) {
+            throw new InvalidArgumentException('The number of rails must be greater than one.\n');
+        }
 
         $numberOfLetters = count($textArray);
         $rails = $this->rail->getRails($numberOfLetters, $numberOfRails);
