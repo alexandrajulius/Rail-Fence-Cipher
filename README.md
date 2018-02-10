@@ -76,10 +76,11 @@ execute in root directory
       ./bin/phpspec run
 
 ## Notes on design
-I implemented the functionality of this task into a class although I don't consider an object oriented abstraction necessarily useful in this case for the following reasons:
+I implemented the functionality of this task into several class in order to practice phpspec.
+I don't consider an object oriented abstraction necessarily useful in this case for the following reasons:
 
-In the current implementation, there is no state or property that the methods need to manipulate or maintain. 
-Consequently, all methods are declared static. Besides, this implementation does not make use of either inheritance or polymorphism.
+There is no state or property that the methods need to manipulate or maintain. 
+Consequently, all methods could be declared static. Besides, this implementation does not make use of either inheritance or polymorphism.
 
 ## Author Contact
 [alexandra.julius@gmail.com](mailto:alexandra.julius@gmail.com)
