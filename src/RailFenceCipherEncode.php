@@ -1,13 +1,11 @@
 <?php
 
-include_once 'Rail.php';
-include_once 'Matrix.php';
+include_once 'EncodeMatrix.php';
 
 class RailFenceCipherEncode
 {
     public function __construct() {
-        $this->rail = new Rail;
-        $this->matrix = new Matrix;
+        $this->matrix = new EncodeMatrix;
     }
 
     public function encode($plainText, $numberOfRails)
@@ -18,17 +16,9 @@ class RailFenceCipherEncode
         if ($numberOfRails <=1) {
             throw new InvalidArgumentException('The number of rails must be greater than one.\n');
         }
-        //remove white spaces
-        //todo: do not delete white spaces but take a valid string as input
-        $cleanedString = preg_replace('/\s/', '', $plainText);
-        $textArray = str_split($cleanedString);
 
-        //todo: call the rails inside the matrix class, so matrix can be used without calling rails before
-        $numberOfLetters = count($textArray);
-        $rails = $this->rail->getRails($numberOfLetters, $numberOfRails);
-
-        $matrix = $this->matrix->getMatrix($textArray, $rails, $numberOfRails);
-
+        $textArray = str_split($plainText);
+        $matrix = $this->matrix->getEncodeMatrix($textArray, $numberOfRails);
         $outputString = $this->generateOutput($matrix);
         return $outputString;
     }

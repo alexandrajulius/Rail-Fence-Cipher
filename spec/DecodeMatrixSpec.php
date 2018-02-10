@@ -13,11 +13,16 @@ class DecodeMatrixSpec extends ObjectBehavior
         $this->shouldHaveType(DecodeMatrix::class);
     }
 
+    function it_returns_correct_matrix_for_2_rails()
+    {
+        $this->getDecodeMatrix(["X","O","X","O","X"], 2)[0]->shouldBe(array("X",".","O",".","X"));
+        $this->getDecodeMatrix(["X","O","X","O","X"], 2)[1]->shouldBe(array(".","O",".","X","."));
+    }
+
     function it_returns_correct_matrix_for_3_rails()
     {
-        $this->getDecodeMatrix([0,1,2,1,0,1,2,1,0,1], 3)->shouldHaveCount(3);
-        $this->getDecodeMatrix([0,1,2,1,0,1,2,1,0,1], 3)[0]->shouldBe(array("?",".",".",".","?",".",".",".","?","."));
-        $this->getDecodeMatrix([0,1,2,1,0,1,2,1,0,1], 3)[1]->shouldBe(array(".","?",".","?",".","?",".","?",".","?"));
-        $this->getDecodeMatrix([0,1,2,1,0,1,2,1,0,1], 3)[2]->shouldBe(array(".",".","?",".",".",".","?",".",".","."));
+        $this->getDecodeMatrix(["h","e","l","l","o","a","g","a","i","n"], 3)[0]->shouldBe(array("h",".",".",".","e",".",".",".","l","."));
+        $this->getDecodeMatrix(["h","e","l","l","o","a","g","a","i","n"], 3)[1]->shouldBe(array(".","l",".","o",".","a",".","g",".","a"));
+        $this->getDecodeMatrix(["h","e","l","l","o","a","g","a","i","n"], 3)[2]->shouldBe(array(".",".","i",".",".",".","n",".",".","."));
     }
 }

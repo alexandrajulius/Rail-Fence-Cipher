@@ -3,21 +3,11 @@
 namespace spec;
 
 use RailFenceCipherEncode;
-use Rail;
-use Matrix;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 class RailFenceCipherEncodeSpec extends ObjectBehavior
 {
-
-    function let(Rail $rail, Matrix $matrix)
-    {
-        $this->beConstructedWith($rail, $matrix);
-        $rail->getRails(Argument::any())->willReturn(true);
-        $matrix->getMatrix(Argument::any())->willReturn(true);
-    }
-
     function it_is_initializable()
     {
         $this->shouldHaveType(RailFenceCipherEncode::class);
@@ -33,13 +23,33 @@ class RailFenceCipherEncodeSpec extends ObjectBehavior
         $this->shouldThrow(new \InvalidArgumentException('The number of rails must be greater than one.\n'))->duringEncode("hallo", 1);
     }
 
-    function it_returns_correct_string_for_2_rails(Rail $rail, Matrix $matrix)
+    function it_returns_correct_string_for_2_rails()
     {
-        $rail->getRails(5,2)->willReturn([0,1,0,1,0]);
-        $mockMatrix = array();
-        $mockMatrix[0] = str_split("X.X.X");
-        $mockMatrix[1] = str_split(".O.O.");
-        $matrix->getMatrix(["X","O","X","O","X"], [0,1,0,1,0], 2)->willReturn($mockMatrix);
         $this->encode("XOXOX", 2)->shouldReturn("XXXOO");
+    }
+
+    function it_returns_decoded_string_for_2_rails_with_white_space()
+    {
+        $this->encode("hello again", 2)->shouldReturn("hloaanel gi");
+    }
+
+    function it_returns_decoded_string_for_3_rails()
+    {
+        $this->encode("helloagain", 3)->shouldReturn("hoielaanlg");
+    }
+
+    function it_returns_decoded_string_for_3_rails_with_white_space()
+    {
+        $this->encode("hello again", 3)->shouldReturn("hoael gilan");
+    }
+
+    function it_returns_decoded_string_for_5_rails()
+    {
+        $this->encode("EXERCISMISAWESOME", 5)->shouldReturn("EIEXMSMESAORIWSCE");
+    }
+
+    function it_returns_decoded_string_for_6_rails()
+    {
+        $this->encode("112358132134558914423337761098715972584418167651094617711286", 6)->shouldReturn("133714114238148966225439541018335470986172518171757571896261");
     }
 }

@@ -56,8 +56,8 @@ dependencies:
 
 There are two scripts (encode.php and decode.php) to be executed in the root directory:
       
-      php encode.php $stringToBeDecoded $numberOfRails
-      php decode.php $stringToBeEncoded $numberOfRails
+      php encode.php "$stringToBeDecoded" $numberOfRails
+      php decode.php "$stringToBeEncoded" $numberOfRails
 
 with two input parameters for each script:
        

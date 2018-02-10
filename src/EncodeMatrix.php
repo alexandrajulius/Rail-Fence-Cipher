@@ -1,12 +1,21 @@
 <?php
 
-class Matrix
+include_once 'Rail.php';
+
+class EncodeMatrix
 {
-    public function getMatrix($textArray, $rails, $numberOfRails)
+    public function __construct() {
+        $this->rail = new Rail;
+    }
+
+    public function getEncodeMatrix($textArray, $numberOfRails)
     {
         #todo: error-handling check if empty and then return empty string
-        #todo: don't use rails as a parameter but call it here so the class can later be used without calling rails first
+        #todo: where does the empty space from the input disapear? find out in tests
         $matrix = array();
+
+        $numberOfLetters = count($textArray);
+        $rails = $this->rail->getRails($numberOfLetters, $numberOfRails);
         $railsToLetters = $this->getRailsToLetters($textArray, $rails);
         for ($i = 0; $i < $numberOfRails; $i++)
         {

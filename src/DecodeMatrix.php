@@ -1,11 +1,19 @@
 <?php
 
+include_once 'Rail.php';
+
 class DecodeMatrix
 {
-    //todo: pack hier auch gleich noch die Buchstaben mit in die Matrix
-    public function getDecodeMatrix($rails, $numberOfRails)
+    public function __construct() {
+        $this->rail = new Rail;
+    }
+
+    public function getDecodeMatrix($textArray, $numberOfRails)
     {
-        $matrix = array();
+        $numberOfLetters = count($textArray);
+        $rails = $this->rail->getRails($numberOfLetters, $numberOfRails);
+
+        $decodeMatrix = array();
         for ($i = 0; $i < $numberOfRails; $i++)
         {
             $rail = array();
@@ -14,8 +22,25 @@ class DecodeMatrix
                 $rail[$i][] = ".";
                 $rail[$n][$m] = "?";
             }
-            array_push($matrix, $rail[$i]);
+            array_push($decodeMatrix, $rail[$i]);
         }
-        return $matrix;
+
+        $decodeMatrixWithLetters = $this->matchInputWithDecodeMatrix($decodeMatrix, $textArray);
+        return $decodeMatrixWithLetters;
+    }
+
+    private function matchInputWithDecodeMatrix($decodeMatrix, $textArray)
+    {
+        foreach ($decodeMatrix as &$rail) {
+            foreach ($rail as $k => &$placeholder) {
+                foreach($textArray as $l => $letter) {
+                    if ($placeholder == "?") {
+                        $placeholder = $textArray[$l];
+                        unset($textArray[$l]);
+                    }
+                }
+            }
+        }
+        return $decodeMatrix;
     }
 }
