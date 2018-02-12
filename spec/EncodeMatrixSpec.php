@@ -13,6 +13,11 @@ class EncodeMatrixSpec extends ObjectBehavior
         $this->shouldHaveType(EncodeMatrix::class);
     }
 
+    function it_returns_empty_matrix_for_empty_string_and_two_rails()
+    {
+        $this->getEncodeMatrix([""], 2)[0]->shouldBe(array(""));
+    }
+
     function it_returns_correct_matrix_with_2_rails()
     {
         $this->getEncodeMatrix(["H","E","L","L","O"], 2)->shouldHaveKey('0');

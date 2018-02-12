@@ -11,9 +11,6 @@ class EncodeMatrix
     public function getEncodeMatrix($textArray, $numberOfRails)
     {
         $matrix = array();
-        if (empty($textArray)) {
-            return $matrix;
-        }
         if ($numberOfRails <=1) {
             throw new InvalidArgumentException('The number of rails must be greater than one.\n');
         }

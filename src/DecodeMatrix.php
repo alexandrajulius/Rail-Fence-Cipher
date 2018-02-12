@@ -11,9 +11,6 @@ class DecodeMatrix
     public function getDecodeMatrix($textArray, $numberOfRails)
     {
         $decodeMatrix = array();
-        if (empty($textArray)) {
-            return $decodeMatrix;
-        }
         if ($numberOfRails <=1) {
             throw new InvalidArgumentException('The number of rails must be greater than one.\n');
         }

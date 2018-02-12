@@ -13,6 +13,11 @@ class DecodeMatrixSpec extends ObjectBehavior
         $this->shouldHaveType(DecodeMatrix::class);
     }
 
+    function it_returns_empty_matrix_for_empty_string_and_two_rails()
+    {
+        $this->getDecodeMatrix([""], 2)[0]->shouldBe(array(""));
+    }
+
     function it_returns_correct_matrix_for_2_rails()
     {
         $this->getDecodeMatrix(["X","O","X","O","X"], 2)[0]->shouldBe(array("X",".","O",".","X"));
