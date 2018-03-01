@@ -22,12 +22,7 @@ class Rail
     private function isDescending($numberOfRails, $letterIndex)
     {
         $quotient = $letterIndex / ($numberOfRails - 1);
-        if (floor($quotient) & 1) {
-            //odd
-            return false;
-        } else {
-            //even
-            return true;
-        }
+        
+        return !(floor($quotient) & 1);
     }
 }
