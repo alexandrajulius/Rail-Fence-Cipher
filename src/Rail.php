@@ -19,7 +19,7 @@ class Rail
         return $matrixIndices;
     }
 
-    private function isDescending($numberOfRails, $letterIndex)
+    private function isDescending($numberOfRails, $letterIndex): bool
     {
         $quotient = $letterIndex / ($numberOfRails - 1);
         if (floor($quotient) & 1) {
