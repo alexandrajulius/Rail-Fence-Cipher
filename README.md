@@ -50,8 +50,8 @@ https://en.wikipedia.org/wiki/Transposition_cipher#Rail_Fence_cipher
 ## How to run
 dependencies:
 
-* [PHP 7.3](http://php.net/downloads.php)
-* [composer] (https://getcomposer.org/)
+* [PHP 7.2+](http://php.net/downloads.php)
+* [composer](https://getcomposer.org/)
 
 Both PhpUnit and PhpSpec are included in composer.json:
 ```
@@ -72,7 +72,7 @@ with two input parameters for each script:
 
 The output will be displayed in the command line after the script was executed.
 
-##Example
+## Example
 
        php encode.php Hello 2
         The encoded string is: Hloel
@@ -91,14 +91,12 @@ $ vendor/bin/phpspec run
 ```
 
 * [phpunit 9.4](https://phpunit.de/getting-started/phpunit-9.html)
-
-execute in root directory
 ```
 $ vendor/bin/phpunit --testdox --colors
 ```
 
 ## Notes on design
-I implemented the functionality of this task into several class in order to practice phpspec.
+I implemented the functionality of this task into several classes in order to practice unit testing with phpspec.
 I don't consider an object oriented abstraction necessarily useful in this case for the following reasons:
 
 There is no state or property that the methods need to manipulate or maintain. 
