@@ -50,7 +50,13 @@ https://en.wikipedia.org/wiki/Transposition_cipher#Rail_Fence_cipher
 ## How to run
 dependencies:
 
-* [PHP 7.1](http://php.net/downloads.php)
+* [PHP 7.3](http://php.net/downloads.php)
+* [composer] (https://getcomposer.org/)
+
+Both PhpUnit and PhpSpec are included in composer.json:
+```
+$ composer install
+```
 
 ## Usage
 
@@ -66,14 +72,30 @@ with two input parameters for each script:
 
 The output will be displayed in the command line after the script was executed.
 
+##Example
+
+       php encode.php Hello 2
+        The encoded string is: Hloel
+        
+       php decode.php Hloel 2
+        The decoded string is: Hello 
+
 ## How to test
 dependencies:
 
-* [phpspec 4.3.0](http://www.phpspec.net/en/stable/)
+* [phpspec 6.3](http://www.phpspec.net/en/stable/)
 
 execute in root directory
-      
-      ./bin/phpspec run
+```
+$ vendor/bin/phpspec run
+```
+
+* [phpunit 9.4](https://phpunit.de/getting-started/phpunit-9.html)
+
+execute in root directory
+```
+$ vendor/bin/phpunit --testdox --colors
+```
 
 ## Notes on design
 I implemented the functionality of this task into several class in order to practice phpspec.

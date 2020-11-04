@@ -1,16 +1,48 @@
 <?php
 
+declare(strict_types = 1);
+
 include_once 'Rail.php';
 
-class EncodeMatrix
+final class EncodeMatrix
 {
     public function __construct() {
         $this->rail = new Rail;
     }
 
-    public function getEncodeMatrix($textArray, $numberOfRails)
+    /**
+     * @param string[] $textArray exploded input string example:
+     *   [
+     *      0 => 'H',
+     *      1 => 'e',
+     *      2 => 'l',
+     *      3 => 'l',
+     *      4 => 'o'
+     *  ]
+     *
+     * @param int $numberOfRails
+     *
+     * @return array $$decodeMatrixWithLetters example:
+     *   [
+     *      0 => [
+     *          0 => 'H',
+     *          1 => '.',
+     *          2 => 'e',
+     *          3 => '.',
+     *          4 => 'l'
+     *      ]
+     *      1 => [
+     *          0 => '.',
+     *          1 => 'l',
+     *          2 => '.',
+     *          3 => 'o',
+     *          4 => '.'
+     *      ]
+     *  ]
+     */
+    public function getEncodeMatrix(array $textArray, int $numberOfRails): array
     {
-        $matrix = array();
+        $matrix = [];
         if ($numberOfRails <=1) {
             throw new InvalidArgumentException('The number of rails must be greater than one.\n');
         }
@@ -20,27 +52,72 @@ class EncodeMatrix
         $railsToLetters = $this->getRailsToLetters($textArray, $rails);
         for ($i = 0; $i < $numberOfRails; $i++)
         {
-            $rail = array();
+            $rail = [];
             foreach ($railsToLetters as $k => $railToLetter)
             {
                 if ($i == $railToLetter[0]) {
                     $rail[$i][] = $railToLetter[1];
                 } else {
-                    $rail[$i][] = ".";
+                    $rail[$i][] = '.';
                 }
-                //todo: it works also without the "." but the tests must be adjusted
             }
             array_push($matrix, $rail[$i]);
         }
+
         return $matrix;
     }
 
-    private function getRailsToLetters($textArray, $rails)
+    /**
+     * @param string[] $textArray exploded input string example:
+     *   [
+     *      0 => 'H',
+     *      1 => 'e',
+     *      2 => 'l',
+     *      3 => 'l',
+     *      4 => 'o'
+     *  ]
+     *
+     *
+     * @param int[] $rails example:
+     *   [
+     *      0 => 0,
+     *      1 => 1,
+     *      2 => 0,
+     *      3 => 1,
+     *      4 => 0
+     *  ]
+     *
+     * @return array $railsToLetters example:
+     *   [
+     *      0 => [
+     *          0 => 0,
+     *          1 => 'H'
+     *      ],
+     *      1 => [
+     *          0 => 1,
+     *          1 => 'e'
+     *      ],
+     *      2 => [
+     *          0 => 0,
+     *          1 => 'l'
+     *      ],
+     *      3 => [
+     *          0 => 1,
+     *          1 => 'l'
+     *      ],
+     *      4 => [
+     *          0 => 0,
+     *          1 => 'o'
+     *      ]
+     *  ]
+     */
+    private function getRailsToLetters(array $textArray, array $rails): array
     {
-        $railsToLetters = array();
+        $railsToLetters = [];
         foreach ($rails as $index => $element) {
             $railsToLetters[$index] = array($element, $textArray[$index]);
         }
+
         return $railsToLetters;
     }
 }
