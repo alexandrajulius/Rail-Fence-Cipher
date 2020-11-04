@@ -4,7 +4,6 @@ namespace spec;
 
 use Rail;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class RailSpec extends ObjectBehavior
 {

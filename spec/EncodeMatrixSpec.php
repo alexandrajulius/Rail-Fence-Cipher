@@ -4,7 +4,6 @@ namespace spec;
 
 use EncodeMatrix;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class EncodeMatrixSpec extends ObjectBehavior
 {

@@ -2,9 +2,8 @@
 
 namespace spec;
 
-use DecodeMatrix;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
+use DecodeMatrix;
 
 class DecodeMatrixSpec extends ObjectBehavior
 {

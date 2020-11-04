@@ -4,7 +4,6 @@ namespace spec;
 
 use RailFenceCipherEncode;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 class RailFenceCipherEncodeSpec extends ObjectBehavior
 {

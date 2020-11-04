@@ -62,13 +62,12 @@ $ composer install
 
 There are two scripts (encode.php and decode.php) to be executed in the root directory:
       
-      php encode.php "$stringToBeDecoded" $numberOfRails
-      php decode.php "$stringToBeEncoded" $numberOfRails
+      php encode.php textToBeEncoded numberOfRails
+      php decode.php textToBeDecoded numberOfRails
 
 with two input parameters for each script:
        
-      string $stringToBeEncoded
-      int $numberOfRails
+      php encode.php string int
 
 The output will be displayed in the command line after the script was executed.
 
@@ -84,15 +83,12 @@ The output will be displayed in the command line after the script was executed.
 dependencies:
 
 * [phpspec 6.3](http://www.phpspec.net/en/stable/)
+* [phpunit 9.4](https://phpunit.de/getting-started/phpunit-9.html)
 
 execute in root directory
 ```
 $ vendor/bin/phpspec run
-```
-
-* [phpunit 9.4](https://phpunit.de/getting-started/phpunit-9.html)
-```
-$ vendor/bin/phpunit --testdox --colors
+$ vendor/bin/phpunit tests --testdox --colors
 ```
 
 ## Notes on design
