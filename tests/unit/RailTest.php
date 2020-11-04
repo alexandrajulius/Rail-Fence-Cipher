@@ -16,22 +16,34 @@ final class RailTest extends TestCase
         $example = new Rail();
         Assert::assertInstanceOf(Rail::class, $example);
     }
-    
+
     /**
      * @dataProvider provideRailData
      */
     public function testConvertRailsToMatrixIndices(int $numberOfLetters, int $numberOfRails, array $expectedMatrixIndices): void
     {
-        $rail = new Rail();
-
-        $actualMatrixIndices = $rail->getRails($numberOfLetters, $numberOfRails);
+        $actualMatrixIndices = (new Rail())->getRails($numberOfLetters, $numberOfRails);
 
         self::assertEquals($expectedMatrixIndices, $actualMatrixIndices);
     }
 
     public function provideRailData(): Generator
     {
-        yield 'MatrixIndices for 4 letters and 10 rails' => [
+        yield '0 letters and 0 rails' => [
+            'numberOfLetters' => 0,
+            'numberOfRails' => 0,
+            'expectedMatrixIndices' => []
+        ];
+
+        yield '1 letters and 1 rails' => [
+            'numberOfLetters' => 1,
+            'numberOfRails' => 1,
+            'expectedMatrixIndices' => [
+                0 => 0
+            ]
+        ];
+
+        yield '4 letters and 10 rails' => [
             'numberOfLetters' => 4,
             'numberOfRails' => 10,
             'expectedMatrixIndices' => [
@@ -42,7 +54,7 @@ final class RailTest extends TestCase
             ]
         ];
 
-        yield 'MatrixIndices for 10 letters and 4 rails' => [
+        yield '10 letters and 4 rails' => [
             'numberOfLetters' => 10,
             'numberOfRails' => 4,
             'expectedMatrixIndices' => [
@@ -59,7 +71,7 @@ final class RailTest extends TestCase
             ]
         ];
 
-        yield 'MatrixIndices for 20 letters and 3 rails' => [
+        yield '20 letters and 3 rails' => [
             'numberOfLetters' => 20,
             'numberOfRails' => 3,
             'expectedMatrixIndices' => [

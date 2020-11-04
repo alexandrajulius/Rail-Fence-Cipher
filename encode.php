@@ -2,14 +2,23 @@
 
 require 'src/RailFenceCipherEncode.php';
 
+$stringToBeEncoded = $argv[1] ?? null;
+$numberOfRails = $argv[2] ?? null;
+
 if ($argc != 3) {
+    $formatErrorMessage = 'FORMAT ERROR: Please enter <script name> <text> <number of rails>';
+    eval("echo '" . addslashes($formatErrorMessage) . "\n';");
+    return;
+}
 
-    echo 'ERROR: Please enter the script-name, the string that should be encoded and the number of rails, each separated by a white space.\n';
-} else {
+if ($numberOfRails <= 1) {
+    $argumentErrorMessage = 'ARGUMENT ERROR: <number of rails> must be greater than 1';
+    eval("echo '" . addslashes($argumentErrorMessage) . "\n';");
+    return;
+}
 
-    $encode = new RailFenceCipherEncode();
-    $stringToBeEncoded = $argv[1];
-    $numberOfRails = $argv[2];
-    $encodedString = $encode->encode($stringToBeEncoded, (int)$numberOfRails);
+if ($argc == 3 && $numberOfRails >= 1) {
+    $encodedString = (new RailFenceCipherEncode())->encode($stringToBeEncoded, (int)$numberOfRails);
     echo "The encoded string is: " . $encodedString . "\n";
 }
+

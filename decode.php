@@ -2,14 +2,22 @@
 
 require 'src/RailFenceCipherDecode.php';
 
+$stringToBeDecoded = $argv[1] ?? null;
+$numberOfRails = $argv[2] ?? null;
+
 if ($argc != 3) {
+    $formatErrorMessage = 'FORMAT ERROR: Please enter <script name> <text> <number of rails>';
+    eval("echo '" . addslashes($formatErrorMessage) . "\n';");
+    return;
+}
 
-    echo 'ERROR: Please enter the script-name, the string that should be decoded and the number of rails, each separated by a white space.\n';
-} else {
+if ($numberOfRails <= 1) {
+    $argumentErrorMessage = 'ARGUMENT ERROR: <number of rails> must be greater than 1';
+    eval("echo '" . addslashes($argumentErrorMessage) . "\n';");
+    return;
+}
 
-    $decode = new RailFenceCipherDecode();
-    $stringToBeDecoded = $argv[1];
-    $numberOfRails = $argv[2];
-    $decodedString = $decode->decode($stringToBeDecoded, (int)$numberOfRails);
+if ($argc == 3 && $numberOfRails >= 1) {
+    $decodedString = (new RailFenceCipherDecode())->decode($stringToBeDecoded, (int)$numberOfRails);
     echo "The decoded string is: " . $decodedString . "\n";
 }

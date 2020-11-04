@@ -19,6 +19,7 @@ final class Rail
      */
     public function getRails(int $numberOfLetters, int $numberOfRails): array
     {
+
         //todo: error handling: throw exception if empty
         $n = $numberOfRails - 1;
         $matrixIndices = [];

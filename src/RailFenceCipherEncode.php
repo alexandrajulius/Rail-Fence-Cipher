@@ -15,7 +15,7 @@ final class RailFenceCipherEncode
         if (empty($plainText)) {
             throw new InvalidArgumentException('Empty input.\n');
         }
-        if ($numberOfRails <=1) {
+        if ($numberOfRails <= 1) {
             throw new InvalidArgumentException('The number of rails must be greater than one.\n');
         }
 
