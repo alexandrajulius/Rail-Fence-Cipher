@@ -20,7 +20,10 @@ final class Rail
     public function getRails(int $numberOfLetters, int $numberOfRails): array
     {
 
-        //todo: error handling: throw exception if empty
+        if ($numberOfRails <= 1) {
+            throw new InvalidArgumentException('The number of rails must be greater than one.\n');
+        }
+
         $n = $numberOfRails - 1;
         $matrixIndices = [];
         for ($i = 0; $i < $numberOfLetters; $i++)

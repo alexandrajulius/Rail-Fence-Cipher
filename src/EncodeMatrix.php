@@ -42,14 +42,18 @@ final class EncodeMatrix
      */
     public function getEncodeMatrix(array $textArray, int $numberOfRails): array
     {
-        $matrix = [];
         if ($numberOfRails <=1) {
             throw new InvalidArgumentException('The number of rails must be greater than one.\n');
         }
 
+        if (empty($textArray)) {
+            return [];
+        }
         $numberOfLetters = count($textArray);
         $rails = $this->rail->getRails($numberOfLetters, $numberOfRails);
         $railsToLetters = $this->getRailsToLetters($textArray, $rails);
+
+        $matrix = [];
         for ($i = 0; $i < $numberOfRails; $i++)
         {
             $rail = [];

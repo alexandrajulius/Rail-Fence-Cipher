@@ -11,32 +11,7 @@ class RailSpec extends ObjectBehavior
     {
         $this->shouldHaveType(Rail::class);
     }
-/*
-    function it_returns_even_for_zero()
-    {
-        $this->isDescending(4,0)->shouldReturn(true);
-    }
 
-    function it_returns_not_even_for_1()
-    {
-        $this->isDescending(4,1)->shouldReturn(true);
-    }
-
-    function it_returns_odd_for_3()
-    {
-        $this->isDescending(4,3)->shouldReturn(false);
-    }
-
-    function it_returns_even_for_22()
-    {
-        $this->isDescending(4,7)->shouldReturn(true);
-    }
-
-    function it_returns_even_for_2()
-    {
-        $this->isDescending(4,17)->shouldReturn(false);
-    }
-*/
     function it_returns_correct_rails_for_10_letters_and_4_rails()
     {
         $actualArray = $this->getRails(10,4);

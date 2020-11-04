@@ -7,27 +7,27 @@ namespace Tests\unit;
 use Generator;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
-use DecodeMatrix;
+use EncodeMatrix;
 
-final class DecodeMatrixTest extends TestCase
+final class EncodeMatrixTest extends TestCase
 {
     public function testCanBeInstantiated(): void
     {
-        $example = new DecodeMatrix();
-        Assert::assertInstanceOf(DecodeMatrix::class, $example);
+        $example = new EncodeMatrix();
+        Assert::assertInstanceOf(EncodeMatrix::class, $example);
     }
 
     /**
-     * @dataProvider provideDecodeMatrixData
+     * @dataProvider provideEncodeMatrixData
      */
-    public function testConvertWordAndRailsToDecodeMatrix(array $textArray, int $numberOfRails, array $expectedMatrix): void
+    public function testConvertWordAndRailsToEncodeMatrix(array $textArray, int $numberOfRails, array $expectedMatrix): void
     {
-        $actualMatrix = (new DecodeMatrix())->getDecodeMatrix($textArray, $numberOfRails);
+        $actualMatrix = (new EncodeMatrix())->getEncodeMatrix($textArray, $numberOfRails);
 
         self::assertEquals($expectedMatrix, $actualMatrix);
     }
 
-    public function provideDecodeMatrixData(): Generator
+    public function provideEncodeMatrixData(): Generator
     {
         yield 'no word and 2 rails' => [
             'textArray' => [],
@@ -48,15 +48,15 @@ final class DecodeMatrixTest extends TestCase
                 0 => [
                     0 => 'H',
                     1 => '.',
-                    2 => 'e',
+                    2 => 'l',
                     3 => '.',
-                    4 => 'l'
+                    4 => 'o'
                 ],
                 1 => [
                     0 => '.',
-                    1 => 'l',
+                    1 => 'e',
                     2 => '.',
-                    3 => 'o',
+                    3 => 'l',
                     4 => '.'
                 ]
             ]
@@ -82,33 +82,33 @@ final class DecodeMatrixTest extends TestCase
                     1 => '.',
                     2 => '.',
                     3 => '.',
-                    4 => 'e',
+                    4 => 'o',
                     5 => '.',
                     6 => '.',
                     7 => '.',
-                    8 => 'l',
+                    8 => 'i',
                     9 => '.',
                 ],
                 1 => [
                     0 => '.',
-                    1 => 'l',
+                    1 => 'e',
                     2 => '.',
-                    3 => 'o',
+                    3 => 'l',
                     4 => '.',
                     5 => 'A',
                     6 => '.',
-                    7 => 'g',
+                    7 => 'a',
                     8 => '.',
-                    9 => 'a'
+                    9 => 'n'
                 ],
                 2 => [
                     0 => '.',
                     1 => '.',
-                    2 => 'i',
+                    2 => 'l',
                     3 => '.',
                     4 => '.',
                     5 => '.',
-                    6 => 'n',
+                    6 => 'g',
                     7 => '.',
                     8 => '.',
                     9 => '.'

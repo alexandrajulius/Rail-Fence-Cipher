@@ -32,15 +32,7 @@ class EncodeMatrixSpec extends ObjectBehavior
         $this->getEncodeMatrix(['H','E','L','L','O',' '], 2)->shouldHaveValue(array('H','.','L','.','O','.'));
         $this->getEncodeMatrix(['H','E','L','L','O',' '], 2)->shouldHaveValue(array('.','E','.','L','.',' '));
     }
-/*
-    function it_returns_different_test()
-    {
-        $mockMatrix = [];
-        $mockMatrix[0] = str_split('X.X.X');
-        $mockMatrix[1] = str_split('.O.O.');
-        $this->getMatrix(['X','O','X','O','X'], 2)->willReturn($mockMatrix);
-    }
-*/
+
     function it_returns_correct_matrix_with_4_rails()
     {
         $this->getEncodeMatrix(['X','O','X','O','X','O','X','O','X','O'], 4)->shouldHaveKey('0');

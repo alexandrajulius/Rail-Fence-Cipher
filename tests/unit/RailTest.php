@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace tests\unit;
 
 use Generator;
+use InvalidArgumentException;
 use Rail;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
@@ -15,6 +16,18 @@ final class RailTest extends TestCase
     {
         $example = new Rail();
         Assert::assertInstanceOf(Rail::class, $example);
+    }
+
+    public function testThrowsExceptionOnZeroRails(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        (new Rail())->getRails(3, 0);
+    }
+
+    public function testThrowsExceptionOnOneRail(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        (new Rail())->getRails(3, 1);
     }
 
     /**
@@ -29,15 +42,9 @@ final class RailTest extends TestCase
 
     public function provideRailData(): Generator
     {
-        yield '0 letters and 0 rails' => [
-            'numberOfLetters' => 0,
-            'numberOfRails' => 0,
-            'expectedMatrixIndices' => []
-        ];
-
-        yield '1 letters and 1 rails' => [
+        yield '0 letters and 2 rails' => [
             'numberOfLetters' => 1,
-            'numberOfRails' => 1,
+            'numberOfRails' => 2,
             'expectedMatrixIndices' => [
                 0 => 0
             ]

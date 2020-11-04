@@ -42,14 +42,17 @@ final class DecodeMatrix
      */
     public function getDecodeMatrix(array $textArray, int $numberOfRails): array
     {
-        $decodeMatrix = [];
         if ($numberOfRails <= 1) {
             throw new InvalidArgumentException('The number of rails must be greater than one.\n');
         }
 
+        if (empty($textArray)) {
+            return [];
+        }
         $numberOfLetters = count($textArray);
         $rails = $this->rail->getRails($numberOfLetters, $numberOfRails);
 
+        $decodeMatrix = [];
         for ($i = 0; $i < $numberOfRails; $i++)
         {
             $rail = [];
