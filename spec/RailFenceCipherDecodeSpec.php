@@ -2,11 +2,17 @@
 
 namespace spec;
 
+use DecodeMatrix;
+use Rail;
 use RailFenceCipherDecode;
 use PhpSpec\ObjectBehavior;
 
 class RailFenceCipherDecodeSpec extends ObjectBehavior
 {
+    function let() {
+        $this->beConstructedWith(new DecodeMatrix(new Rail()));
+    }
+
     function it_is_initializable()
     {
         $this->shouldHaveType(RailFenceCipherDecode::class);

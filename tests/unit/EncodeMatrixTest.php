@@ -8,13 +8,14 @@ use Generator;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 use EncodeMatrix;
+use Rail;
 
 final class EncodeMatrixTest extends TestCase
 {
     public function testCanBeInstantiated(): void
     {
-        $example = new EncodeMatrix();
-        Assert::assertInstanceOf(EncodeMatrix::class, $example);
+        $encoder = $this->getEncodeMatrix();
+        Assert::assertInstanceOf(EncodeMatrix::class, $encoder);
     }
 
     /**
@@ -22,8 +23,7 @@ final class EncodeMatrixTest extends TestCase
      */
     public function testConvertWordAndRailsToEncodeMatrix(array $textArray, int $numberOfRails, array $expectedMatrix): void
     {
-        $actualMatrix = (new EncodeMatrix())->getEncodeMatrix($textArray, $numberOfRails);
-
+        $actualMatrix = $this->getEncodeMatrix()->getEncodeMatrix($textArray, $numberOfRails);
         self::assertEquals($expectedMatrix, $actualMatrix);
     }
 
@@ -115,5 +115,10 @@ final class EncodeMatrixTest extends TestCase
                 ]
             ]
         ];
+    }
+
+    private function getEncodeMatrix(): EncodeMatrix
+    {
+        return new EncodeMatrix(new Rail());
     }
 }

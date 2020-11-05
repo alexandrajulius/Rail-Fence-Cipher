@@ -4,9 +4,14 @@ namespace spec;
 
 use PhpSpec\ObjectBehavior;
 use DecodeMatrix;
+use Rail;
 
 class DecodeMatrixSpec extends ObjectBehavior
 {
+    function let() {
+        $this->beConstructedWith(new Rail());
+    }
+
     function it_is_initializable()
     {
         $this->shouldHaveType(DecodeMatrix::class);

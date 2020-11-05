@@ -2,12 +2,15 @@
 
 declare(strict_types = 1);
 
-include_once 'Rail.php';
-
 final class DecodeMatrix
 {
-    public function __construct() {
-        $this->rail = new Rail();
+    /**
+     * @var Rail
+     */
+    private $rail;
+
+    public function __construct(Rail $rail) {
+        $this->rail = $rail;
     }
 
     /**

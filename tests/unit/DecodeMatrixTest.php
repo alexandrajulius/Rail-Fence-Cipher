@@ -8,22 +8,26 @@ use Generator;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 use DecodeMatrix;
+use Rail;
 
 final class DecodeMatrixTest extends TestCase
 {
     public function testCanBeInstantiated(): void
     {
-        $example = new DecodeMatrix();
-        Assert::assertInstanceOf(DecodeMatrix::class, $example);
+        $decoder = $this->getDecodeMatrix();
+        Assert::assertInstanceOf(DecodeMatrix::class, $decoder);
     }
 
     /**
      * @dataProvider provideDecodeMatrixData
      */
-    public function testConvertWordAndRailsToDecodeMatrix(array $textArray, int $numberOfRails, array $expectedMatrix): void
+    public function testConvertWordAndRailsToDecodeMatrix(
+        array $textArray,
+        int $numberOfRails,
+        array $expectedMatrix
+    ): void
     {
-        $actualMatrix = (new DecodeMatrix())->getDecodeMatrix($textArray, $numberOfRails);
-
+        $actualMatrix = $this->getDecodeMatrix()->getDecodeMatrix($textArray, $numberOfRails);
         self::assertEquals($expectedMatrix, $actualMatrix);
     }
 
@@ -115,5 +119,10 @@ final class DecodeMatrixTest extends TestCase
                 ]
             ]
         ];
+    }
+
+    private function getDecodeMatrix(): DecodeMatrix
+    {
+        return new DecodeMatrix(new Rail());
     }
 }

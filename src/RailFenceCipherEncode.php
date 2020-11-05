@@ -2,12 +2,15 @@
 
 declare(strict_types = 1);
 
-include_once 'EncodeMatrix.php';
-
 final class RailFenceCipherEncode
 {
-    public function __construct() {
-        $this->matrix = new EncodeMatrix;
+    /**
+     * @var EncodeMatrix
+     */
+    private $matrix;
+
+    public function __construct(EncodeMatrix $matrix) {
+        $this->matrix = $matrix;
     }
 
     public function encode(string $plainText, int $numberOfRails): string

@@ -4,9 +4,14 @@ namespace spec;
 
 use EncodeMatrix;
 use PhpSpec\ObjectBehavior;
+use Rail;
 
 class EncodeMatrixSpec extends ObjectBehavior
 {
+    function let() {
+        $this->beConstructedWith(new Rail());
+    }
+
     function it_is_initializable()
     {
         $this->shouldHaveType(EncodeMatrix::class);

@@ -2,12 +2,15 @@
 
 declare(strict_types = 1);
 
-include_once 'DecodeMatrix.php';
-
 final class RailFenceCipherDecode
 {
-    public function __construct() {
-        $this->decodeMatrix = new DecodeMatrix;
+    /**
+     * @var DecodeMatrix
+     */
+    private $decodeMatrix;
+
+    public function __construct(DecodeMatrix $decodeMatrix) {
+        $this->decodeMatrix = $decodeMatrix;
     }
 
     public function decode(string $inputText, int $numberOfRails): string
