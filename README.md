@@ -80,15 +80,19 @@ The output will be displayed in the command line after the script was executed.
         The decoded string is: Hello 
 
 ## How to test
-dependencies:
+Dependencies:
 
 * [phpspec 6.3](http://www.phpspec.net/en/stable/)
 * [phpunit 9.4](https://phpunit.de/getting-started/phpunit-9.html)
 
-execute in root directory
+Run test suites in in root directory
 ```
 $ vendor/bin/phpspec run
 $ vendor/bin/phpunit tests --testdox --colors
+```
+Run phpunit code coverage
+```
+$ vendor/bin/phpunit tests --coverage-text
 ```
 
 ## Notes on design
