@@ -94,7 +94,6 @@ Run phpunit code coverage
 ```
 $ vendor/bin/phpunit tests --coverage-text
 ```
-and get a result such as
 <img width="387" alt="Screenshot 2020-11-11 at 16 48 07" src="https://user-images.githubusercontent.com/23189414/98832896-b00a4480-243d-11eb-9658-be6a7f12846f.png">
 
 ## Notes on design
