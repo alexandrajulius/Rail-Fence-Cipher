@@ -1,6 +1,8 @@
 <?php
 
 require 'src/RailFenceCipherDecode.php';
+require 'src/DecodeMatrix.php';
+require 'src/Rail.php';
 
 $stringToBeDecoded = $argv[1] ?? null;
 $numberOfRails = $argv[2] ?? null;
@@ -18,6 +20,6 @@ if ($numberOfRails <= 1) {
 }
 
 if ($argc == 3 && $numberOfRails >= 1) {
-    $decodedString = (new RailFenceCipherDecode())->decode($stringToBeDecoded, (int)$numberOfRails);
+    $decodedString = (new RailFenceCipherDecode(new DecodeMatrix(new Rail)))->decode($stringToBeDecoded, (int)$numberOfRails);
     echo "The decoded string is: " . $decodedString . "\n";
 }

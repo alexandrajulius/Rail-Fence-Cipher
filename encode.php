@@ -1,6 +1,8 @@
 <?php
 
 require 'src/RailFenceCipherEncode.php';
+require 'src/EncodeMatrix.php';
+require 'src/Rail.php';
 
 $stringToBeEncoded = $argv[1] ?? null;
 $numberOfRails = $argv[2] ?? null;
@@ -18,7 +20,7 @@ if ($numberOfRails <= 1) {
 }
 
 if ($argc == 3 && $numberOfRails >= 1) {
-    $encodedString = (new RailFenceCipherEncode())->encode($stringToBeEncoded, (int)$numberOfRails);
+    $encodedString = (new RailFenceCipherEncode(new EncodeMatrix(new Rail())))->encode($stringToBeEncoded, (int)$numberOfRails);
     echo "The encoded string is: " . $encodedString . "\n";
 }
 
