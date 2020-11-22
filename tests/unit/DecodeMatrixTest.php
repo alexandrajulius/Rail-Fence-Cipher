@@ -4,18 +4,25 @@ declare(strict_types=1);
 
 namespace Tests\unit;
 
+use Container;
 use Generator;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 use DecodeMatrix;
-use Rail;
 
 final class DecodeMatrixTest extends TestCase
 {
+    private $container;
+
+    protected function getDecodeMatrix(): DecodeMatrix
+    {
+        $this->container = new Container();
+        return $this->container->getDecodeMatrix();
+    }
+
     public function testCanBeInstantiated(): void
     {
-        $decoder = $this->getDecodeMatrix();
-        Assert::assertInstanceOf(DecodeMatrix::class, $decoder);
+        Assert::assertInstanceOf(DecodeMatrix::class, $this->getDecodeMatrix());
     }
 
     /**
@@ -27,7 +34,7 @@ final class DecodeMatrixTest extends TestCase
         array $expectedMatrix
     ): void
     {
-        $actualMatrix = $this->getDecodeMatrix()->getDecodeMatrix($textArray, $numberOfRails);
+        $actualMatrix = $this->getDecodeMatrix()->create($textArray, $numberOfRails);
         self::assertEquals($expectedMatrix, $actualMatrix);
     }
 
@@ -119,10 +126,5 @@ final class DecodeMatrixTest extends TestCase
                 ]
             ]
         ];
-    }
-
-    private function getDecodeMatrix(): DecodeMatrix
-    {
-        return new DecodeMatrix(new Rail());
     }
 }

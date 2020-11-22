@@ -43,7 +43,7 @@ final class DecodeMatrix
      *      ]
      *  ]
      */
-    public function getDecodeMatrix(array $textArray, int $numberOfRails): array
+    public function create(array $textArray, int $numberOfRails): array
     {
         if ($numberOfRails <= 1) {
             throw new InvalidArgumentException('The number of rails must be greater than one.\n');
@@ -67,7 +67,7 @@ final class DecodeMatrix
             array_push($decodeMatrix, $rail[$i]);
         }
 
-        $decodeMatrixWithLetters = $this->matchInputWithDecodeMatrix($decodeMatrix, $textArray);
+        $decodeMatrixWithLetters = $this->hydrateInput($decodeMatrix, $textArray);
 
         return $decodeMatrixWithLetters;
     }
@@ -92,7 +92,7 @@ final class DecodeMatrix
      *  ]
      * @return array
      */
-    private function matchInputWithDecodeMatrix(array $decodeMatrix, array $textArray): array
+    private function hydrateInput(array $decodeMatrix, array $textArray): array
     {
         foreach ($decodeMatrix as &$rail) {
             foreach ($rail as $k => &$placeholder) {

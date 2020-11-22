@@ -4,18 +4,25 @@ declare(strict_types=1);
 
 namespace Tests\unit;
 
+use Container;
 use Generator;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 use EncodeMatrix;
-use Rail;
 
 final class EncodeMatrixTest extends TestCase
 {
+    private $container;
+
+    protected function getEncodeMatrix(): EncodeMatrix
+    {
+        $this->container = new Container();
+        return $this->container->getEncodeMatrix();
+    }
+
     public function testCanBeInstantiated(): void
     {
-        $encoder = $this->getEncodeMatrix();
-        Assert::assertInstanceOf(EncodeMatrix::class, $encoder);
+        Assert::assertInstanceOf(EncodeMatrix::class, $this->getEncodeMatrix());
     }
 
     /**
@@ -23,7 +30,7 @@ final class EncodeMatrixTest extends TestCase
      */
     public function testConvertWordAndRailsToEncodeMatrix(array $textArray, int $numberOfRails, array $expectedMatrix): void
     {
-        $actualMatrix = $this->getEncodeMatrix()->getEncodeMatrix($textArray, $numberOfRails);
+        $actualMatrix = $this->getEncodeMatrix()->create($textArray, $numberOfRails);
         self::assertEquals($expectedMatrix, $actualMatrix);
     }
 
@@ -115,10 +122,5 @@ final class EncodeMatrixTest extends TestCase
                 ]
             ]
         ];
-    }
-
-    private function getEncodeMatrix(): EncodeMatrix
-    {
-        return new EncodeMatrix(new Rail());
     }
 }

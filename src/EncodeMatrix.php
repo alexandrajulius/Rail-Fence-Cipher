@@ -43,7 +43,7 @@ final class EncodeMatrix
      *      ]
      *  ]
      */
-    public function getEncodeMatrix(array $textArray, int $numberOfRails): array
+    public function create(array $textArray, int $numberOfRails): array
     {
         if ($numberOfRails <=1) {
             throw new InvalidArgumentException('The number of rails must be greater than one.\n');

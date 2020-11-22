@@ -53,5 +53,4 @@ class RailSpec extends ObjectBehavior
         $actualArray->shouldHaveKeyWithValue(19,1);
         $actualArray->shouldHaveCount(20);
     }
-
 }

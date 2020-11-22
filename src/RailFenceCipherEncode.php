@@ -7,10 +7,10 @@ final class RailFenceCipherEncode
     /**
      * @var EncodeMatrix
      */
-    private $matrix;
+    private $encodeMatrix;
 
-    public function __construct(EncodeMatrix $matrix) {
-        $this->matrix = $matrix;
+    public function __construct(EncodeMatrix $encodeMatrix) {
+        $this->encodeMatrix = $encodeMatrix;
     }
 
     public function encode(string $plainText, int $numberOfRails): string
@@ -23,7 +23,7 @@ final class RailFenceCipherEncode
         }
 
         $textArray = str_split($plainText);
-        $matrix = $this->matrix->getEncodeMatrix($textArray, $numberOfRails);
+        $matrix = $this->encodeMatrix->create($textArray, $numberOfRails);
         $outputString = $this->generateOutput($matrix);
 
         return $outputString;

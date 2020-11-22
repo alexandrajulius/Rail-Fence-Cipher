@@ -4,20 +4,26 @@ declare(strict_types=1);
 
 namespace Tests\unit;
 
-use DecodeMatrix;
+use Container;
 use Generator;
 use InvalidArgumentException;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
-use Rail;
 use RailFenceCipherDecode;
 
 final class RailFenceCipherDecodeTest extends TestCase
 {
+    private $container;
+
+    protected function getRailFenceCipherDecode(): RailFenceCipherDecode
+    {
+        $this->container = new Container();
+        return $this->container->getRailFenceCipherDecode();
+    }
+
     public function testCanBeInstantiated(): void
     {
-        $railFenceCipherDecoder = $this->getRailFenceCipherDecode();
-        Assert::assertInstanceOf(RailFenceCipherDecode::class, $railFenceCipherDecoder);
+        Assert::assertInstanceOf(RailFenceCipherDecode::class, $this->getRailFenceCipherDecode());
     }
 
     public function testThrowsExceptionOnEmptyInputText(): void
@@ -55,10 +61,5 @@ final class RailFenceCipherDecodeTest extends TestCase
             'numberOfRails' => 6,
             'expectedOutputText' => '112358132134558914423337761098715972584418167651094617711286'
         ];
-    }
-
-    private function getRailFenceCipherDecode(): RailFenceCipherDecode
-    {
-        return new RailFenceCipherDecode(new DecodeMatrix(new Rail()));
     }
 }

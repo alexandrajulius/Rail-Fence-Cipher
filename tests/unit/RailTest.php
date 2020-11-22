@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace tests\unit;
 
+use Container;
 use Generator;
 use InvalidArgumentException;
 use Rail;
@@ -12,10 +13,17 @@ use PHPUnit\Framework\TestCase;
 
 final class RailTest extends TestCase
 {
+    private $container;
+
+    protected function getRail(): Rail
+    {
+        $this->container = new Container();
+        return $this->container->getRail();
+    }
+
     public function testCanBeInstantiated(): void
     {
-        $example = new Rail();
-        Assert::assertInstanceOf(Rail::class, $example);
+        Assert::assertInstanceOf(Rail::class, $this->getRail());
     }
 
     public function testThrowsExceptionOnZeroRails(): void

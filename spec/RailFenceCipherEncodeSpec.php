@@ -2,15 +2,14 @@
 
 namespace spec;
 
-use EncodeMatrix;
-use Rail;
+use Container;
 use RailFenceCipherEncode;
 use PhpSpec\ObjectBehavior;
 
 class RailFenceCipherEncodeSpec extends ObjectBehavior
 {
     function let() {
-        $this->beConstructedWith(new EncodeMatrix(new Rail()));
+        $this->beConstructedWith((new Container)->getEncodeMatrix());
     }
 
     function it_is_initializable()

@@ -24,7 +24,7 @@ final class RailFenceCipherDecode
 
         $textArray = str_split($inputText);
 
-        $decodeMatrixWithLetters = $this->decodeMatrix->getDecodeMatrix($textArray, $numberOfRails);
+        $decodeMatrixWithLetters = $this->decodeMatrix->create($textArray, $numberOfRails);
         $outputText = $this->getOutputStringFromMatrix($decodeMatrixWithLetters);
 
         return $outputText;
