@@ -8,3 +8,4 @@ docker-compose.override.yml
 composer.json
 composer.lock
 composer.phar
+.phpunit.result.cache

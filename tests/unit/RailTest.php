@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace tests\unit;
 
-use Container;
+use DIContainer;
 use Generator;
 use InvalidArgumentException;
 use Rail;
@@ -17,7 +17,7 @@ final class RailTest extends TestCase
 
     protected function getRail(): Rail
     {
-        $this->container = new Container();
+        $this->container = new DIContainer();
         return $this->container->getRail();
     }
 

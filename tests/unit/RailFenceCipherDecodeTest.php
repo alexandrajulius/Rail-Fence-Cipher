@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\unit;
 
-use Container;
+use DIContainer;
 use Generator;
 use InvalidArgumentException;
 use PHPUnit\Framework\Assert;
@@ -17,7 +17,7 @@ final class RailFenceCipherDecodeTest extends TestCase
 
     protected function getRailFenceCipherDecode(): RailFenceCipherDecode
     {
-        $this->container = new Container();
+        $this->container = new DIContainer();
         return $this->container->getRailFenceCipherDecode();
     }
 

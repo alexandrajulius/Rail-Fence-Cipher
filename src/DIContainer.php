@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-final class Container
+final class DIContainer
 {
     public function getRailFenceCipherDecode(): RailFenceCipherDecode
     {

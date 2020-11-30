@@ -42,9 +42,7 @@ W . . . E . . . C . . . R . . . L . . . T . . . E
 . . A . . . I . . . V . . . D . . . E . . . N . .
 ```
 
-Taken from:
-http://exercism.io/exercises/php/rail-fence-cipher/readme
-and
+Taken from
 https://en.wikipedia.org/wiki/Transposition_cipher#Rail_Fence_cipher
 
 ## How to run

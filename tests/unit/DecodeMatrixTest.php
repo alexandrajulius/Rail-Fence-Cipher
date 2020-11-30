@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\unit;
 
-use Container;
+use DIContainer;
 use Generator;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
@@ -16,7 +16,7 @@ final class DecodeMatrixTest extends TestCase
 
     protected function getDecodeMatrix(): DecodeMatrix
     {
-        $this->container = new Container();
+        $this->container = new DIContainer();
         return $this->container->getDecodeMatrix();
     }
 
