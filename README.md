@@ -100,6 +100,3 @@ I don't consider an object oriented abstraction necessarily useful in this case 
 
 There is no state or property that the methods need to manipulate or maintain. 
 Consequently, all methods could be declared static. Besides, this implementation does not make use of either inheritance or polymorphism.
-
-## Author Contact
-[alexandra.julius@gmail.com](mailto:alexandra.julius@gmail.com)
